@@ -5,6 +5,7 @@ class Player {
 public:
 	string str;
 	string number(int name) {
+		//srand(time(0));
 		string answers[5] = {"Good choice\n", "Okay\n", "Wise choice\n", "Excellent\n", "Amazing\n"};
 		string s;
 		cout << "P" << name << " guess your number: ";
@@ -16,14 +17,14 @@ public:
 	}
 	int answer(string str, int name) {
 		string ans;
-		cout << "P" << name << " enter your answer : ";
+		cout << "P" << name << " enter your answer: ";
 		cin >> ans;
 		int bulls = 0, cows = 0;
 		for (size_t i = 0; i < 4; ++i) {
 			if (ans[i] == str[i]) {
 				bulls++;
 			}
-			else if ((str.find(ans[i]) < 4) && (ans[0] != ans[1] || ans[2] != ans[3] || ans[1] != ans[2])) {
+			else if (str.find(ans[i]) != string::npos) {
 				cows++;
 			}
 		}
@@ -47,7 +48,7 @@ int main() {
 
 	Player p1;
 	Player p2;
-	greetings();
+	//greetings();
 	p1.str = p1.number(1);
 	p2.str = p1.number(2);
 
